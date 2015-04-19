@@ -4,12 +4,13 @@ echo "Starting John Holliman's vim setup."
 
 # Make sure git is installed.
 OS_T="$OSTYPE"
+echo OS_T
 if [[ OS_T == "linux-gnu" ]]; then
-  # MAC OS
+  # Linux (Ubuntu)
   sudo apt-get install git
   sudo apt-get install python-pip
 elif [[ OS_T == "darwin"* ]]; then
-  # Linux (Ubuntu)
+  # MAC OS
   brew install git
 fi
 
@@ -29,7 +30,7 @@ pip install pyflakes
 [ -e ~/.vim/bundle/vim-go ] || git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
 
 # Copy over the necessary files.
-cp ftplugin/*vim ~/.vim/ftplugin
+cp ftplugin/.vim ~/.vim/ftplugin
 cp vimrc ~/.vimrc
 
 echo "Done setting up vim."
