@@ -31,6 +31,7 @@ sudo pip install pyflakes
 
 # Copy over the necessary files.
 cp ftplugin/*.vim ~/.vim/after/ftplugin
+cp colors/*.vim ~/.vim/colors
 cp vimrc ~/.vimrc
 
 echo "Done setting up vim."
