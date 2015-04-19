@@ -21,6 +21,8 @@ Plugin 'fatih/vim-go'
 " Now we can turn our filetype functionality back on
 filetype plugin indent on
 
+let g:syntastic_python_checkers = ['pyflakes']
+
 " NERDTree
 map <C-k> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
