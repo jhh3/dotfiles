@@ -28,8 +28,8 @@ let g:syntastic_python_checkers = ['pyflakes']
 map <C-k> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
 
-" Coloring is good
-color solarized
+" Coloring is good -- requires terminal theme suport
+" color solarized
 :syntax on
 
 " Enable file type detection
