@@ -4,7 +4,7 @@ echo "Starting John Holliman's vim setup."
 
 # Make sure git is installed.
 OS_T="$OSTYPE"
-echo OS_T
+echo $OS_T
 if [[ OS_T == "linux-gnu" ]]; then
   # Linux (Ubuntu)
   sudo apt-get install git
