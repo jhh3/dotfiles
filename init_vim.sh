@@ -35,4 +35,6 @@ cp colors/*.vim ~/.vim/colors
 cp vimrc ~/.vimrc
 
 echo "Done setting up vim."
-echo "You can delete this repo now."
+
+rm -rf ../Dot-files
+
