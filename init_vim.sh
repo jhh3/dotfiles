@@ -14,10 +14,10 @@ elif [[ OS_T == "darwin"* ]]; then
 fi
 
 # Make the necessary directories.
-[ -e ~/.vim ] || mdkir -p ~/.vim
-[ -e ~/.vim/bundle ] || mdkir -p ~/.vim/bundle
-[ -e ~/.vim/after/ftplugin ] || mdkir -p ~/.vim/after/ftplugin
-[ -e ~/.vim/colors ] || mdkir -p ~/.vim/colors
+[ -e ~/.vim ] || mkdir -p ~/.vim
+[ -e ~/.vim/bundle ] || mkdir -p ~/.vim/bundle
+[ -e ~/.vim/after/ftplugin ] || mkdir -p ~/.vim/after/ftplugin
+[ -e ~/.vim/colors ] || mkdir -p ~/.vim/colors
 
 # Install vim plugins and their dependencies.
 [ -e ~/.vim/bundle/Vundle.vim ] || git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
