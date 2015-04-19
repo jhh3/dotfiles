@@ -6,6 +6,7 @@ echo "Starting John Holliman's vim setup."
 OS_T="$OSTYPE"
 if [[ $OS_T == "linux-gnu" ]]; then
   # Linux (Ubuntu)
+  sudo apt-get install vim
   sudo apt-get install git
   sudo apt-get install python-pip
 elif [[ $OS_T == "darwin"* ]]; then
