@@ -27,7 +27,6 @@ fi
 sudo pip install pep8
 sudo pip install autopep8
 sudo pip install pyflakes
-[ -e ~/.vim/bundle/vim-go ] || git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
 
 # Copy over the necessary files.
 cp ftplugin/*.vim ~/.vim/after/ftplugin

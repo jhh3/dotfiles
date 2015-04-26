@@ -16,7 +16,6 @@ call vundle#begin()
 Plugin 'gmarik/vundle'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree.git'
-Plugin 'fatih/vim-go'
 
 call vundle#end()
 " Now we can turn our filetype functionality back on
