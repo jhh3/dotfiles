@@ -36,6 +36,3 @@ cp vimrc ~/.vimrc
 
 echo "Done setting up vim."
 
-cd ..
-rm -rf Dot-files
-

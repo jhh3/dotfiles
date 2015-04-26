@@ -90,6 +90,3 @@ function! StripWhitespace()
   call setreg('/', old_query)
 endfunction
 map <F7> :call StripWhitespace()<CR>
-
-
-
