@@ -25,9 +25,9 @@ fi
 vim +PluginInstall +qall
 
 # Python dependencies for syntastic.
-[ $(python -c "import pep8" &> /dev/null) ] || sudo pip install pep8
-[ $(python -c "import autopep8" &> /dev/null) ] || sudo pip install autopep8
-[ $(python -c "import pyflakes" &> /dev/null) ] || sudo pip install pyflakes
+if ! $(python -c "import pep8" &> /dev/null); then sudo pip install pep8; fi;
+if ! $(python -c "import autopep8" &> /dev/null); then sudo pip install autopep8; fi;
+if ! $(python -c "import pyflakes" &> /dev/null); then sudo pip install pyflakes; fi;
 
 # Copy over the necessary files.
 cp ftplugin/*.vim ~/.vim/after/ftplugin
