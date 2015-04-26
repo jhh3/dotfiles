@@ -22,11 +22,12 @@ fi
 
 # Install vim plugins and their dependencies.
 [ -e ~/.vim/bundle/Vundle.vim ] || git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-[ -e ~/.vim/bundle/syntastic ] || git clone https://github.com/scrooloose/syntastic.git ~/.vim/bundle/syntastic
-[ -e ~/.vim/bundle/nerdtree ] || git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
-sudo pip install pep8
-sudo pip install autopep8
-sudo pip install pyflakes
+vim +PluginInstall +qall
+
+# Python dependencies for syntastic.
+[ $(python -c "import pep8" &> /dev/null) ] || sudo pip install pep8
+[ $(python -c "import autopep8" &> /dev/null) ] || sudo pip install autopep8
+[ $(python -c "import pyflakes" &> /dev/null) ] || sudo pip install pyflakes
 
 # Copy over the necessary files.
 cp ftplugin/*.vim ~/.vim/after/ftplugin
