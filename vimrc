@@ -22,6 +22,8 @@ call vundle#end()
 filetype plugin indent on
 
 let g:syntastic_python_checkers = ['pyflakes']
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
 " NERDTree
 map <C-k> :NERDTreeToggle<CR>
