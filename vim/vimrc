@@ -21,25 +21,23 @@ call vundle#end()
 " Now we can turn our filetype functionality back on
 filetype plugin indent on
 
-" Syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
+" syntastic settings
 let g:syntastic_python_checkers = ['pyflakes']
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 " NERDTree
 map <C-k> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
 
 " Coloring is good -- requires terminal theme suport
-" color solarized
+syntax enable
+set background=dark
+colorscheme vimbrant
+highlight ColorColumn ctermbg=7
+highlight ColorColumn guibg=Gray
+" set background=dark
+" colorscheme solarized
 :syntax on
 
 " Enable file type detection
