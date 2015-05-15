@@ -1,5 +1,5 @@
 
 install:
 	@echo Setting up git configuration.
-	@cp gitconf ~/.gitconf
+	@cp gitconfig ~/.gitconfig
 	@echo Done setting up git configuration.

@@ -1,6 +1,7 @@
+.PHONY: all tmux vim git
 
 all: tmux vim git
-	echo Done =o=
+	@echo "Done =o="
 
 tmux:
 	cd tmux; make install

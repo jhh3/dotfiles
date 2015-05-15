@@ -2,12 +2,14 @@
 
 # Make sure git is installed.
 OS_T="$OSTYPE"
-if [[ $OS_T == "linux-gnu" ]]; then
+if [[ $OS_T == "linux-gnu" ]]
+then
   # Linux (Ubuntu)
   sudo apt-get install vim
   sudo apt-get install git
   sudo apt-get install python-pip
-elif [[ $OS_T == "darwin"* ]]; then
+elif [[ $OS_T == "darwin"* ]] 
+then
   # MAC OS
   brew install git
 fi
