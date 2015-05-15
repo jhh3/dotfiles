@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo "Starting John Holliman's vim setup."
-
 # Make sure git is installed.
 OS_T="$OSTYPE"
 if [[ $OS_T == "linux-gnu" ]]; then
@@ -33,6 +31,4 @@ if ! $(python -c "import pyflakes" &> /dev/null); then sudo pip install pyflakes
 cp ftplugin/*.vim ~/.vim/after/ftplugin
 cp colors/*.vim ~/.vim/colors
 cp vimrc ~/.vimrc
-
-echo "Done setting up vim."
 
