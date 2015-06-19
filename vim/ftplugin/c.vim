@@ -1,6 +1,4 @@
 " Settings for C
 
-setlocal tabstop=2
-setlocal shiftwidth=2
-
-setlocal colorcolumn=80
+" Try to stay under 80 characters.
+setlocal colorcolumn=81
