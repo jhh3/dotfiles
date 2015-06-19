@@ -4,10 +4,11 @@
 OS_T="$OSTYPE"
 if [[ $OS_T == "linux-gnu" ]]
 then
-  # Linux (Ubuntu)
-  sudo apt-get install vim
-  sudo apt-get install git
-  sudo apt-get install python-pip
+  # Linux
+  python -mplatform || grep Ubuntu && sudo apt-get update || sudo yum update
+  python -mplatform || grep centos && sudo apt-get install vim || sudo yum install vim
+  python -mplatform || grep centos && sudo apt-get install git || sudo yum install git
+  python -mplatform || grep centos && sudo apt-get install python-pip || sudo yum install python-pip
 elif [[ $OS_T == "darwin"* ]] 
 then
   # MAC OS
