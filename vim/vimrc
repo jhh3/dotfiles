@@ -38,16 +38,11 @@ highlight ColorColumn ctermbg=7
 highlight ColorColumn guibg=Gray
 :syntax on
 
-" Enable file type detection
-:filetype plugin indent on
-
 " Tabs to 2 spaces
-set noexpandtab
-set copyindent
-set preserveindent
-set softtabstop=0
 set shiftwidth=2
 set tabstop=2
+
+:filetype plugin indent on
 
 " autoindent
 set autoindent
@@ -101,4 +96,4 @@ endfunction
 map <F7> :call StripWhitespace()<CR>
 
 " Exit insert with jj.
-imap jj <esc>
+imap jk <esc>
