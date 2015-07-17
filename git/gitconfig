@@ -27,7 +27,7 @@
   d = diff
   #############
   l = log --oneline
-  lg = log --oneline --graph --decorate
+	gr = log --graph --format=oneline --full-history --all --color --pretty=tformat:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s%x20%x1b[33m(%an)%x1b[0m"
   #############
   m = merge
   #############
