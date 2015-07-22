@@ -1,0 +1,68 @@
+#!/bin/bash
+#####################################
+# dotfiles
+#####################################
+
+######### HELP
+
+[[ "$1" == "source" ]] || \
+
+echo 'Dotfiles - JHH3 (jhh3.com)'
+
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then cat <<HELP
+Usage: $(basename "$0")
+See the README for documentation.
+https://github.com/jholliman/dotfiles
+HELP
+exit; 
+fi
+
+######### VARIABLES
+
+dir=`pwd`/../links
+
+######### INSTALL LIBS
+
+OS_T="$OSTYPE"
+if [[ $OS_T == "linux-gnu" ]]
+then
+  # Linux
+  python -mplatform || grep centos && sudo yum -y update || sudo apt-get -y update
+  python -mplatform || grep centos && sudo yum -y install vim || sudo apt-get -y install vim
+  python -mplatform || grep centos && sudo yum -y install git || sudo apt-get -y install git
+  python -mplatform || grep centos && sudo yum -y install python-pip || sudo apt-get -y install python-pip
+  python -mplatform || grep centos && sudo yum -y install zsh || sudo apt-get -y install zsh
+elif [[ $OS_T == "darwin"* ]] 
+then
+  # MAC OS
+  brew install git > /dev/null 2>&1
+	brew install zsh > /dev/null 2>&1
+fi
+
+sudo sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+######### Make links
+
+## VIM
+echo "--> Adding vim symlinks"
+ln -sf $dir/vimrc ~/.vimrc
+ln -sf $dir/.vim ~/
+
+# Install vim plugins and their dependencies.
+echo "	--> Installing vundle"
+[ -e ~/.vim/bundle/Vundle.vim ] || git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall
+
+# Python dependencies for syntastic.
+echo "	--> Installing python dependencies for syntastic"
+if ! $(python -c "import pep8" &> /dev/null); then sudo pip install pep8; fi;
+if ! $(python -c "import autopep8" &> /dev/null); then sudo pip install autopep8; fi;
+if ! $(python -c "import pyflakes" &> /dev/null); then sudo pip install pyflakes; fi;
+
+## TMUX
+echo "--> Adding tmux symlinks"
+ln -sf $dir/tmux.conf ~/.tmux.conf
+
+## ZSHRC
+echo "--> Adding zshrc symlinks"
+ln -sf $dir/zshrc ~/.zshrc
