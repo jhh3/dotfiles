@@ -60,9 +60,13 @@ if ! $(python -c "import autopep8" &> /dev/null); then sudo pip install autopep8
 if ! $(python -c "import pyflakes" &> /dev/null); then sudo pip install pyflakes; fi;
 
 ## TMUX
-echo "--> Adding tmux symlinks"
+echo "--> Adding tmux symlink"
 ln -sf $dir/tmux.conf ~/.tmux.conf
 
+## GIT
+echo "--> Adding git symlink"
+ln -sf $dir/gitconfig ~/.gitconfig
+
 ## ZSHRC
-echo "--> Adding zshrc symlinks"
+echo "--> Adding zshrc symlink"
 ln -sf $dir/zshrc ~/.zshrc
