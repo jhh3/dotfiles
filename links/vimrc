@@ -132,6 +132,7 @@ let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 
 " airline settings
+let g:Powerline_symbols = 'fancy'
 let g:airline_powerline_fonts = 1
 
 " NERDTree

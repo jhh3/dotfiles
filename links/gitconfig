@@ -1,0 +1,42 @@
+[user]
+	name = John Holliman
+	email = holliman@mit.edu
+[push]
+	default = simple
+[core]
+  editor = vim
+[color]
+  ui = auto
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+[color "status"]
+  added = green bold
+  changed = yellow bold
+  untracked = red bold
+[alias]
+  a = add --all
+  au = add -u
+  #############
+  c = commit
+  cm = commit -m
+  #############
+  d = diff
+  #############
+  l = log --oneline
+	gr = log --graph --format=oneline --full-history --all --color --pretty=tformat:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s%x20%x1b[33m(%an)%x1b[0m"
+  #############
+  m = merge
+  #############
+  o = checkout
+  ob = checkout -b
+  #############
+  ps = push
+  #############
+  pl = pull
+  #############
+  s = status
+  #############
