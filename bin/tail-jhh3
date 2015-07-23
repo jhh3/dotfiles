@@ -1,0 +1,12 @@
+#!/bin/bash
+# Tail log for my personal server
+
+# Configuration
+# Defined in my .zshrc. Replace with desired to customize.
+USER_HOST=$REMOTE_GIT_USER_HOST
+LOG_FILE=$JHH3_LOG
+
+# Restart web server
+
+ssh $USER_HOST tail -f $JHH3_LOG
+

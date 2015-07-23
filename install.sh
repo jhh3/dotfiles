@@ -19,7 +19,8 @@ fi
 
 ######### VARIABLES
 
-dir=`pwd`/../links
+dir=`pwd`/links
+bindir=`pwd`/bin
 
 ######### INSTALL LIBS
 
@@ -70,3 +71,8 @@ ln -sf $dir/gitconfig ~/.gitconfig
 ## ZSHRC
 echo "--> Adding zshrc symlink"
 ln -sf $dir/zshrc ~/.zshrc
+
+## BIN 
+echo "--> Adding bin to path"
+echo "export PATH=$bindir:$PATH" >> ~/.zshrc
+

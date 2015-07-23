@@ -1,0 +1,11 @@
+#!/bin/bash
+# Restart my personal server
+
+# Configuration
+# Defined in my .zshrc. Replace with desired to customize.
+USER_HOST=$REMOTE_GIT_USER_HOST
+
+# Restart web server
+
+ssh $USER_HOST 'sudo supervisorctl restart jhh3'
+

@@ -17,8 +17,8 @@ To get started please run:
 
 ```bash
 git clone https://github.com/jholliman/dotfiles.git
-cd dotfiles/bin
-./dotfiles
+cd dotfiles
+./install.sh
 ```
 
 ## Wait, you're not done! Do this:

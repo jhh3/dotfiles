@@ -1,0 +1,19 @@
+#!/bin/bash
+# Removes a git repository from a remote server.
+
+# Configuration
+# Defined in my .zshrc. Replace with desired to customize.
+USER_HOST=$REMOTE_GIT_USER_HOST
+GIT_PATH=$REMOTE_GIT_PATH
+
+REPO=$1
+
+# Remove remote
+echo "----"
+echo "-- Removing remote repository at -> $USER_HOST:$GIT_PATH/$REPO.git"
+echo "-- ..."
+
+ssh $USER_HOST 'rm -rf '$GIT_PATH'/'$REPO'.git'
+
+echo "-- Remote repo removed."
+echo "----"
