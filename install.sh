@@ -70,9 +70,9 @@ ln -sf $dir/gitconfig ~/.gitconfig
 
 ## ZSHRC
 echo "--> Adding zshrc symlink"
-ln -sf $dir/zshrc ~/.zshrc
+cp $dir/zshrc $dir/zshrc_auto
+ln -sf $dir/zshrc_auto ~/.zshrc
 
 ## BIN 
 echo "--> Adding bin to path"
-echo "export PATH=$bindir:$PATH" >> ~/.zshrc
-
+echo 'export PATH=$bindir:$PATH' >> ~/.zshrc
