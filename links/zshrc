@@ -43,4 +43,3 @@ function chpwd() {
 }
 
 # Auto generated
-export PATH=/Users/jholliman/Documents/personal/dotfiles/bin:/Users/jholliman/Documents/personal/scripts:/Users/jholliman/Documents/personal/remote-git-init:/usr/texbin:/Users/jholliman/Documents/go/bin:/Users/jholliman/Documents/ngrok-app:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
