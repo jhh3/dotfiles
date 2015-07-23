@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/jholliman/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # oh-my-zsh theme
 ZSH_THEME="agnoster"
@@ -8,7 +8,7 @@ ZSH_THEME="agnoster"
 plugins=(git docker)
 
 # User configuration
-DEFAULT_USER="jholliman"
+DEFAULT_USER=`id -un`
 source $ZSH/oh-my-zsh.sh
 
 # Editor
@@ -21,7 +21,7 @@ export JHH3_LOG="/home/www/my-site/jhh3.log"
 
 # PATH variable
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-export PATH=/Users/jholliman/Documents/ngrok-app:$PATH     # ngrok
+export PATH=~/Documents/ngrok-app:$PATH                    # ngrok
 export PATH=/usr/texbin:$PATH                              # LaTeX
 
 # Set personal aliases
