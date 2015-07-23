@@ -1,21 +1,15 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/jholliman/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
+# oh-my-zsh theme
 ZSH_THEME="agnoster"
-DEFAULT_USER="jholliman"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# oh-my-zsh plugins
 plugins=(git docker)
 
 # User configuration
-
+DEFAULT_USER="jholliman"
 source $ZSH/oh-my-zsh.sh
-
-# GO
-export GOROOT=~/Documents/go
-export GOPATH=$GOROOT/src
 
 # Editor
 export EDITOR='vim'
@@ -27,11 +21,8 @@ export JHH3_LOG="/home/www/my-site/jhh3.log"
 
 # PATH variable
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-export PATH=/Users/jholliman/Documents/ngrok-app:$PATH
-export PATH=$GOROOT/bin:$PATH
-export PATH=/usr/texbin:$PATH
-export PATH=/Users/jholliman/Documents/personal/remote-git-init:$PATH
-export PATH=/Users/jholliman/Documents/personal/scripts:$PATH
+export PATH=/Users/jholliman/Documents/ngrok-app:$PATH     # ngrok
+export PATH=/usr/texbin:$PATH                              # LaTeX
 
 # Set personal aliases
 alias vundle="vim +PluginInstall +qall"
