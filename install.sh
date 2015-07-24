@@ -40,7 +40,7 @@ then
 	brew install zsh > /dev/null 2>&1
 fi
 
-sudo sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+[ -e ~/.oh-my-zsh ] || sudo sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 ######### Make links
 

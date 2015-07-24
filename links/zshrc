@@ -2,7 +2,7 @@
 export ZSH=~/.oh-my-zsh
 
 # oh-my-zsh theme
-ZSH_THEME="agnoster"
+ZSH_THEME="robbyrussell"
 
 # oh-my-zsh plugins
 plugins=(git docker)
@@ -25,11 +25,12 @@ export PATH=~/Documents/ngrok-app:$PATH                    # ngrok
 export PATH=/usr/texbin:$PATH                              # LaTeX
 
 # Right prompt
-WEATHER=~/Dropbox/personal/dotfiles/bin/get-temp.py
-function weather {
-	echo `$WEATHER 94035` 2>/dev/null
-}
-RPROMPT='$(weather)'
+# NOTE : Slows down zsh because it takes a bit to the fetch the weather.
+#WEATHER=~/Dropbox/personal/dotfiles/bin/get-temp.py
+#function weather {
+#	echo `$WEATHER 94035` 2>/dev/null
+#}
+#RPROMPT='$(weather)'
 
 # Set personal aliases
 alias vundle="vim +PluginInstall +qall"
