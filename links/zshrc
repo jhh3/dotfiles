@@ -24,6 +24,13 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 export PATH=~/Documents/ngrok-app:$PATH                    # ngrok
 export PATH=/usr/texbin:$PATH                              # LaTeX
 
+# Right prompt
+WEATHER=~/Dropbox/personal/dotfiles/bin/get-temp.py
+function weather {
+	echo `$WEATHER 94035` 2>/dev/null
+}
+RPROMPT='$(weather)'
+
 # Set personal aliases
 alias vundle="vim +PluginInstall +qall"
 
