@@ -20,6 +20,7 @@ Plugin 'scrooloose/nerdtree.git'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
+Plugin 'mkitt/tabline.vim'
 
 " Syntax
 Plugin 'scrooloose/syntastic'
@@ -60,6 +61,11 @@ set statusline+=%=                                                  " right alig
 set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\   " highlight
 set statusline+=%10((%l/%L,%c)%)\                                   " line and column
 set statusline+=%P                                                  " percentage of file
+
+" Tabline
+hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
+hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
+hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
 
 " cool tab completion stuff
 set wildmenu
