@@ -21,8 +21,8 @@ export JHH3_LOG="/home/www/my-site/jhh3.log"
 
 # PATH variable
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-export PATH=~/Documents/ngrok-app:$PATH                    # ngrok
-export PATH=/usr/texbin:$PATH                              # LaTeX
+export PATH=~/Documents/ngrok-app:$PATH
+export PATH=/usr/texbin:$PATH
 
 # Right prompt
 # NOTE : Slows down zsh because it takes a bit to the fetch the weather.
