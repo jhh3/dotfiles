@@ -34,6 +34,7 @@ export PATH=/usr/texbin:$PATH                              # LaTeX
 
 # Set personal aliases
 alias vundle="vim +PluginInstall +qall"
+alias ls="ls -FG -la"
 
 # ls after a cd
 function chpwd() {

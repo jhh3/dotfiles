@@ -38,6 +38,8 @@ then
   # MAC OS
   brew install git > /dev/null 2>&1
 	brew install zsh > /dev/null 2>&1
+	brew install caskroom/cask/brew-cask
+	brew update && brew upgrade brew-cask && brew cleanup
 fi
 
 [ -e ~/.oh-my-zsh ] || sudo sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -47,7 +49,7 @@ fi
 ## VIM
 echo "--> Adding vim symlinks"
 ln -sf $dir/vimrc ~/.vimrc
-ln -sf $dir/.vim ~/
+ln -sf $dir/.vim ~
 
 # Install vim plugins and their dependencies.
 echo "	--> Installing vundle"
@@ -67,6 +69,7 @@ ln -sf $dir/tmux.conf ~/.tmux.conf
 ## GIT
 echo "--> Adding git symlink"
 ln -sf $dir/gitconfig ~/.gitconfig
+ln -sf $dir/gitignore ~/.gitignore
 
 ## ZSHRC
 echo "--> Adding zshrc symlink"
