@@ -23,6 +23,8 @@ brew cask install caffeine
 brew cask install cheatsheet
 brew cask install flux
 brew cask install google-chrome
+brew cask install iterm2
+brew cask install one-password
 brew cask install sizeup
 brew cask install sublime-text
 brew cask install transmission
