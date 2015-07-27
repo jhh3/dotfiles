@@ -25,6 +25,7 @@ Plugin 'mkitt/tabline.vim'
 " Syntax
 Plugin 'scrooloose/syntastic'
 Plugin 'fatih/vim-go'
+Plugin 'nathanaelkane/vim-indent-guides'
 
 call vundle#end()
 " Now we can turn our filetype functionality back on
