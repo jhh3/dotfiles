@@ -2,3 +2,4 @@
 links/.vim/bundle
 .DS_Store
 links/zshrc_auto
+.netrwhist
