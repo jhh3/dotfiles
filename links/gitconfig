@@ -40,3 +40,4 @@
 	#############
 	s = status
 	#############
+	fuk = reset --hard HEAD
