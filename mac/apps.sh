@@ -24,6 +24,7 @@ brew cask install cheatsheet
 brew cask install flux
 brew cask install google-chrome
 brew cask install iterm2
+brew cask install menubar-countdown
 brew cask install one-password
 brew cask install sizeup
 brew cask install sublime-text
