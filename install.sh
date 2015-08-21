@@ -78,4 +78,4 @@ ln -sf $dir/zshrc_auto ~/.zshrc
 
 ## BIN 
 echo "--> Adding bin to path"
-echo 'export PATH=$bindir:$PATH' >> ~/.zshrc
+echo 'export PATH='$bindir':$PATH' >> ~/.zshrc
