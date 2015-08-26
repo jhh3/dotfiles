@@ -17,16 +17,52 @@ HELP
 exit;
 fi
 
+######### HOMEBREW
+
+# Check for Homebrew,
+# Install if we don't have it
+if test ! $(which brew); then
+  echo "Installing homebrew..."
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+# Update homebrew recipes
+brew update
+
+######### BINARIES
+
+binaries=(
+	git
+	node
+	python
+	tree
+  trash
+)
+
+echo "Installing binaries..."
+brew install ${binaries[@]}
+
+brew cleanup
+
 ######### SOFTWARE
 
-brew cask install caffeine
-brew cask install cheatsheet
-brew cask install flux
-brew cask install google-chrome
-brew cask install iterm2
-brew cask install menubar-countdown
-brew cask install one-password
-brew cask install sizeup
-brew cask install sublime-text
-brew cask install transmission
-brew cask install vlc
+apps=(
+	appcleaner
+	caffeine
+	cheatsheet
+	flux
+	google-chrome
+	iterm2
+	menubar-countdown
+	one-password
+	sizeup
+	spotify
+	sublime-text
+	transmission
+	vagrant
+	virtualbox
+	vlc
+)
+
+echo "Installing apps..."
+brew cask install --appdir=/Applications ${apps}
