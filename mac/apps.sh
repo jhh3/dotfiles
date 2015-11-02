@@ -32,36 +32,35 @@ brew update
 ######### BINARIES
 
 binaries=(
-	git
-	node
-	python
-	tree
-  trash
+ git
+ node
+ python
+ tree
+ trash
 )
 
 echo "Installing binaries..."
 brew install ${binaries[@]}
-
 brew cleanup
 
 ######### SOFTWARE
 
 apps=(
-	appcleaner
-	caffeine
-	cheatsheet
-	flux
-	google-chrome
-	iterm2
-	menubar-countdown
-	one-password
-	sizeup
-	spotify
-	sublime-text
-	transmission
-	vagrant
-	virtualbox
-	vlc
+ appcleaner
+ caffeine
+ cheatsheet
+ flux
+ google-chrome
+ iterm2
+ menubar-countdown
+ one-password
+ shiftit
+ spotify
+ sublime-text
+ transmission
+ vagrant
+ virtualbox
+ vlc
 )
 
 echo "Installing apps..."

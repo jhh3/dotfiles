@@ -21,6 +21,7 @@ fi
 
 dir=`pwd`/links
 bindir=`pwd`/bin
+cpdir=`pwd`/copy
 
 ######### INSTALL LIBS
 
@@ -73,6 +74,7 @@ ln -sf $dir/gitignore ~/.gitignore
 
 ## ZSHRC
 echo "--> Adding zshrc symlink"
+cp $cpdir/jhh3.zsh-theme ~/.oh-my-zsh/themes
 cp $dir/zshrc $dir/zshrc_auto
 ln -sf $dir/zshrc_auto ~/.zshrc
 

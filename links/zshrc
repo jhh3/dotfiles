@@ -2,7 +2,7 @@
 export ZSH=~/.oh-my-zsh
 
 # oh-my-zsh theme
-ZSH_THEME="robbyrussell"
+ZSH_THEME="jhh3"
 
 # oh-my-zsh plugins
 plugins=(git docker)
