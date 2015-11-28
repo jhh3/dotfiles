@@ -12,7 +12,7 @@ DEFAULT_USER=`id -un`
 source $ZSH/oh-my-zsh.sh
 
 # Editor
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # Remote git server
 export REMOTE_GIT_USER_HOST=jhh3
@@ -21,20 +21,16 @@ export JHH3_LOG="/home/www/my-site/jhh3.log"
 
 # PATH variable
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-export PATH=~/Documents/ngrok-app:$PATH
 export PATH=/usr/texbin:/Library/TeX/Distributions/Programs/texbin:$PATH
 
-# Right prompt
-# NOTE : Slows down zsh because it takes a bit to the fetch the weather.
-#WEATHER=~/Dropbox/personal/dotfiles/bin/get-temp.py
-#function weather {
-#	echo `$WEATHER 94035` 2>/dev/null
-#}
-#RPROMPT='$(weather)'
-
 # Set personal aliases
+alias ni="nvim"
+alias mklatex='latexmk -pvc -pdf -xelatex'
 alias vundle="vim +PluginInstall +qall"
-alias ls="ls -FG -l"
+alias lg="ls -FG -l"
+alias projects="cd /Users/johnholliman/Dropbox/Projects"
+alias meng="cd /Users/johnholliman/Dropbox/JHHIII/2015-2016/Fall/M.Eng."
+alias class="cd /Users/johnholliman/Dropbox/JHHIII/2015-2016/Fall"
 
 # ls after a cd
 function chpwd() {
