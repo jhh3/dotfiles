@@ -35,7 +35,7 @@ call vundle#end()
 filetype plugin indent on
 
 " You Complete Me
-let g:ycm_global_ycm_extra_conf = '/Users/johnholliman/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
 " Coloring is good -- requires terminal theme suport
 syntax enable
@@ -119,6 +119,9 @@ autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
 
 " C configurations
 autocmd FileType c setlocal colorcolumn=80
+
+" C++ configurations
+autocmd FileType cpp setlocal colorcolumn=80
 
 " Python configurations
 autocmd FileType python setlocal shiftwidth=4 expandtab tabstop=4 softtabstop=4

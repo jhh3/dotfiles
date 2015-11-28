@@ -52,6 +52,9 @@ echo "--> Adding vim symlinks"
 ln -sf $dir/vimrc ~/.vimrc
 ln -sf $dir/.vim ~
 
+# YCM conf
+cp $cpdir/ycm_extra_conf.py ~/.ycm_extra_conf
+
 # Install vim plugins and their dependencies.
 echo "	--> Installing vundle"
 [ -e ~/.vim/bundle/Vundle.vim ] || git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
