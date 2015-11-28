@@ -39,6 +39,7 @@ then
 	# MAC OS
 	brew install git > /dev/null 2>&1
 	brew install zsh > /dev/null 2>&1
+	brew install neovim/neovim/neovim > /dev/null 2>&1
 	brew install caskroom/cask/brew-cask
 	brew update && brew upgrade brew-cask && brew cleanup
 fi
@@ -65,6 +66,9 @@ echo "	--> Installing python dependencies for syntastic"
 if ! $(python -c "import pep8" &> /dev/null); then sudo pip install pep8; fi;
 if ! $(python -c "import autopep8" &> /dev/null); then sudo pip install autopep8; fi;
 if ! $(python -c "import pyflakes" &> /dev/null); then sudo pip install pyflakes; fi;
+
+# Python dependencies for neovim
+if ! $(python -c "import neovim" &> /dev/null); then sudo pip install neovim; fi;
 
 ## TMUX
 echo "--> Adding tmux symlink"
