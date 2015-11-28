@@ -51,6 +51,7 @@ fi
 ## VIM
 echo "--> Adding vim symlinks"
 ln -sf $dir/vimrc ~/.vimrc
+ln -sf $dir/vimrc $dir/.vim/init.vim
 ln -sf $dir/.vim ~
 
 # YCM conf
