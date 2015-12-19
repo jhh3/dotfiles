@@ -1,10 +1,6 @@
 """
-" File ./.vimrc
-"
-" Quick notes:
-"		F6 toggles spellcheck
-"		F5 toggles paste mode
-"
+" Author: John Holliman
+" File: ~/.vimrc
 """
 
 " Load vundle
@@ -17,10 +13,8 @@ Plugin 'gmarik/vundle'
 
 " System
 Plugin 'scrooloose/nerdtree.git'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
-Plugin 'mkitt/tabline.vim'
+Plugin 'ervandew/supertab'
 
 " Syntax
 Plugin 'scrooloose/syntastic'
@@ -29,90 +23,55 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'lervag/vimtex'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'marijnh/tern_for_vim'
+Plugin 'hynek/vim-python-pep8-indent'
 
 call vundle#end()
 " Now we can turn our filetype functionality back on
 filetype plugin indent on
 
-" You Complete Me
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+" Neovim
+let g:python_host_prog = '/usr/bin/python'
 
-" Coloring is good -- requires terminal theme suport
-syntax enable
+syntax enable " Coloring is good -- requires terminal theme suport
 set background=dark
 colorscheme vimbrant
-
-" Tabs to 2 spaces
-set shiftwidth=2
+set mouse=a " enable mouse support
+set wildmenu " cool tab completion stuff
+set wildmode=list:longest,full 
+set number " line numbers 
+set ignorecase " searching - ignore case and AI
+set smartcase
+set visualbell " beeps are annoying 
+set hlsearch " Search
+set title " Title
+set ruler " Ruler
+set laststatus=2 " Always show status line
+set directory=/tmp// " Swap
+set backupskip=/tmp/*,/private/tmp/*
+set shiftwidth=2 " Tabs to 2 spaces
 set tabstop=2
 set noexpandtab
-
-" autoindent
-set autoindent
-
-" Highlight current line
-set cursorline
+set autoindent " autoindent
+set cursorline " Highlight current line
 hi CursorLine		cterm=NONE ctermbg=233
+set pastetoggle=<F5> " toggle pasting to deal with autoindent
 
-" toggle pasting to deal with autoindent
-set pastetoggle=<F5>
-
-" Status line --- not needed if vim-airline is working
-set statusline=
-set statusline+=%-3.3n\
-set statusline+=%f\
-set statusline+=%h%m%r%w
-set statusline+=[%{strlen(&ft)?&ft:'none'},
-set statusline+=%{strlen(&fenc)?&fenc:&enc},
-set statusline+=%{&fileformat}]
-set statusline+=%=
-set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\
-set statusline+=%10((%l/%L,%c)%)\
-set statusline+=%P
-
-" Tabline
-hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
-hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
-hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
-
-" cool tab completion stuff
-set wildmenu
-set wildmode=list:longest,full
-
-" enable mouse support
-set mouse=a
-
-" line numbers
-set number
-
-" searching - ignore co<F6>ase and AI
-set ignorecase
-set smartcase
+" Use Q for formatting the current paragraph (or selection)
+vmap Q gq
+nmap Q gqap
 
 " toggle spelling with F4 key
 map <F6> :set spell!<CR><Bar>:echo "Spell Check: " . strpart("OffOn", 3 * &spell, 3)<CR>
 
 " format
 map <F9> mzgg=G`z
+"
+" Exit insert with jk.
+imap jk <esc>
 
-" beeps are annoying
-set visualbell
-
-" Search
-set hlsearch
-
-" Title
-set title
-
-" Ruler
-set ruler
-
-" Always show status line
-set laststatus=2
-
-" Swap
-set directory=/tmp//
-set backupskip=/tmp/*,/private/tmp/*
+"""
+" Custom filetype settings
+"""
 
 " HTML configurations
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
@@ -127,6 +86,10 @@ autocmd FileType cpp setlocal colorcolumn=80
 autocmd FileType python setlocal shiftwidth=4 expandtab tabstop=4 softtabstop=4
 autocmd FileType python setlocal colorcolumn=120
 
+"""
+" Custom functions
+"""
+
 " Strip trailing whitespace (F7)
 function! StripWhitespace()
 	let save_cursor = getpos(".")
@@ -137,7 +100,20 @@ function! StripWhitespace()
 endfunction
 map <F7> :call StripWhitespace()<CR>
 
-" syntastic settings
+"""
+" Plugin settings
+"""
+
+" Tabline
+hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
+hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
+hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
+
+" You Complete Me
+let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+
+" Syntastic settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -151,15 +127,16 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_mode_map = { "mode": "active", "active_filetypes": [], "passive_filetypes": ["tex"] }
+let g:syntastic_python_python_exec = '/usr/bin/python'
+let g:syntastic_check_on_open = 1
 nnoremap <F8> :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 
-" airline settings
+" Airline settings
 let g:Powerline_symbols = 'fancy'
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " NERDTree
 map <C-k> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
 
-" Exit insert with jk.
-imap jk <esc>
