@@ -25,6 +25,9 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'hynek/vim-python-pep8-indent'
 
+" Other
+Plugin 'vitalk/vim-simple-todo'
+
 call vundle#end()
 " Now we can turn our filetype functionality back on
 filetype plugin indent on
@@ -69,6 +72,11 @@ map <F9> mzgg=G`z
 " Exit insert with jk.
 imap jk <esc>
 
+" Save file with ctrl space
+nnoremap <NUL> :w<CR>
+
+:let mapleader = ","
+
 """
 " Custom filetype settings
 """
@@ -85,6 +93,9 @@ autocmd FileType cpp setlocal colorcolumn=80
 " Python configurations
 autocmd FileType python setlocal shiftwidth=4 expandtab tabstop=4 softtabstop=4
 autocmd FileType python setlocal colorcolumn=120
+
+" LaTeX configurations
+autocmd FileType tex setlocal nocursorline
 
 """
 " Custom functions
@@ -103,6 +114,9 @@ map <F7> :call StripWhitespace()<CR>
 """
 " Plugin settings
 """
+
+" Simple todo list
+let g:simple_todo_tick_symbol = "✗"
 
 " Tabline
 hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE

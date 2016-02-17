@@ -1,0 +1,6 @@
+#!/bin/bash
+
+NOW=$(date +"%m-%d-%Y-%T")
+
+/usr/local/bin/imagesnap /Users/johnholliman/Documents/login-snaps/${NOW}.jpg
+

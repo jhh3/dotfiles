@@ -55,6 +55,7 @@ apps=(
  menubar-countdown
  one-password
  shiftit
+ skim
  spotify
  sublime-text
  transmission
