@@ -27,13 +27,17 @@ Plugin 'hynek/vim-python-pep8-indent'
 
 " Other
 Plugin 'vitalk/vim-simple-todo'
+Plugin 'jplaut/vim-arduino-ino'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-notes'
 
 call vundle#end()
 " Now we can turn our filetype functionality back on
 filetype plugin indent on
 
 " Neovim
-let g:python_host_prog = '/usr/bin/python'
+"let g:python_host_prog = '/usr/bin/python'
+let g:python_host_prog = $VIM_PYTHON
 
 syntax enable " Coloring is good -- requires terminal theme suport
 set background=dark
@@ -58,6 +62,8 @@ set autoindent " autoindent
 set cursorline " Highlight current line
 hi CursorLine		cterm=NONE ctermbg=233
 set pastetoggle=<F5> " toggle pasting to deal with autoindent
+set foldmethod=indent " Enable folding
+set foldlevel=99
 
 " Use Q for formatting the current paragraph (or selection)
 vmap Q gq
@@ -76,6 +82,15 @@ imap jk <esc>
 nnoremap <NUL> :w<CR>
 
 :let mapleader = ","
+
+"split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Enable folding with the spacebar
+nnoremap <space> za
 
 """
 " Custom filetype settings
@@ -115,6 +130,8 @@ map <F7> :call StripWhitespace()<CR>
 " Plugin settings
 """
 
+:let g:notes_directories = ['~/Dropbox/Notes']
+
 " Simple todo list
 let g:simple_todo_tick_symbol = "✗"
 
@@ -141,7 +158,8 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_mode_map = { "mode": "active", "active_filetypes": [], "passive_filetypes": ["tex"] }
-let g:syntastic_python_python_exec = '/usr/bin/python'
+"let g:syntastic_python_python_exec = '/usr/bin/python'
+let g:syntastic_python_python_exec = $VIM_PYTHON
 let g:syntastic_check_on_open = 1
 nnoremap <F8> :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 
@@ -151,6 +169,6 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
 " NERDTree
-map <C-k> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
 
