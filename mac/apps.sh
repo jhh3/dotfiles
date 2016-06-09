@@ -34,7 +34,6 @@ brew update
 binaries=(
  git
  node
- python
  tree
  trash
 )
@@ -46,23 +45,17 @@ brew cleanup
 ######### SOFTWARE
 
 apps=(
- appcleaner
- caffeine
- cheatsheet
- flux
  google-chrome
- iterm2
- menubar-countdown
- one-password
+ iterm2-beta
  shiftit
  skim
  spotify
- sublime-text
  transmission
  vagrant
+ vagrant-manager
  virtualbox
  vlc
 )
 
 echo "Installing apps..."
-brew cask install --appdir=/Applications ${apps}
+brew cask install --appdir=/Applications ${apps[@]}

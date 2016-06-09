@@ -25,7 +25,8 @@ then
 	brew install zsh > /dev/null 2>&1
 fi
 
-[ -e ~/.oh-my-zsh ] || sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+[ -e ~/.oh-my-zsh ] || sh $install_dir/zsh-install.sh
+chsh -s $(grep /zsh$ /etc/shells | tail -1)
 
 # Python virtualenv
 sudo pip install virtualenv

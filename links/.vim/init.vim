@@ -1,1 +1,1 @@
-/Users/johnholliman/.vimrc
+/Users/jhh3/Dropbox/projects/dotfiles/links/vimrc
