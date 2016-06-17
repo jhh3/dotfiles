@@ -4,3 +4,4 @@ links/.vim/bundle
 links/zshrc_auto
 .netrwhist
 bin/ngrok
+zsh/.localrc

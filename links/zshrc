@@ -13,29 +13,23 @@ source $ZSH/oh-my-zsh.sh
 
 # Editor
 export EDITOR='nvim'
+export VIM_PYTHON='/Users/jhh3/.virtualenvs/vim/bin/python'
 
-# Remote git server
-export REMOTE_GIT_USER_HOST=jhh3
-export REMOTE_GIT_PATH=/home/git
-export JHH3_LOG="/home/www/my-site/jhh3.log"
+# Settings
+setopt nobeep
+
+source ~/.zsh/alias.zsh
+source ~/.zsh/functions.zsh
+source ~/.zsh/env.zsh
+# Load local variables
+if [[ -a ~/.zsh/.localrc ]]
+then
+  source ~/.zsh/.localrc
+fi
 
 # PATH variable
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-export PATH=/usr/texbin:/Library/TeX/Distributions/Programs/texbin:$PATH
-
-# Set personal aliases
-alias ni="nvim"
-alias mklatex='latexmk -pvc -pdf -xelatex'
-alias vundle="vim +PluginInstall +qall"
-alias lg="ls -FG -l"
-alias projects="cd /Users/johnholliman/Dropbox/Projects"
-alias meng="cd /Users/johnholliman/Dropbox/JHHIII/2015-2016/Fall/M.Eng."
-alias class="cd /Users/johnholliman/Dropbox/JHHIII/2015-2016/Fall"
-
-# ls after a cd
-function chpwd() {
-	emulate -L zsh
-	ls
-}
-
+export PATH=/usr/texbin:/Library/TeX/texbin:$PATH
+export PATH=$PATH:/Users/jhh3/.virtualenvs/vim/bin/
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+export PATH=$PATH:$GOPATH/bin
 # Auto generated
