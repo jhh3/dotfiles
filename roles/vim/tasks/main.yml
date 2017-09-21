@@ -1,0 +1,61 @@
+---
+
+# Install VIM 8
+
+- name: Add Vim 8 PPA
+  become: true
+  apt_repository:
+    repo: 'ppa:jonathonf/vim'
+
+- name: Apt update
+  become: true
+  apt: update_cache=yes
+
+- name: Install Vim 8
+  become: true
+  apt: name=vim state=latest
+
+- name: Create vimrc
+  # No vars used yet, but at some point maybe..
+  template:
+    src: vimrc.j2
+    dest: "{{ ansible_env.HOME }}/.vimrc"
+
+- name: Create vim bundle dir
+  file:
+    path: "{{ ansible_env.HOME }}/.vim/bundle"
+    state: directory
+    mode: 0755
+
+- name: Create vim colors dir
+  file:
+    path: "{{ ansible_env.HOME }}/.vim/colors"
+    state: directory
+    mode: 0755
+
+- name: Copy vimbrant colors
+  copy:
+    src: vimbrant.vim
+    dest: "{{ ansible_env.HOME }}/.vim/colors/vimbrant.vim"
+
+- name: Checkout vundle
+  git:
+    repo: 'https://github.com/VundleVim/Vundle.vim.git'
+    dest: "{{ ansible_env.HOME }}/.vim/bundle/Vundle.vim"
+
+- name: Install vim plugins
+  shell: 'vim -E -s -c "source {{ ansible_env.HOME }}/.vimrc" -c PluginInstall -c qa'
+  args:
+      executable: /bin/bash
+
+#TODO fix. doesn't work
+#- name: Install binaries for vim-go
+#  shell: 'source {{ ansible_env.HOME }}/.zshrc && vim -E +"source ~/.vimrc" +GoInstallBinaries +qa'
+#  args:
+#      executable: /usr/bin/zsh
+
+- name: Compile YouCompleteMe
+  shell: "source {{ ansible_env.HOME }}/.zshrc && source {{ virtualenvwrapper_source }} && workon vim && cd {{ ansible_env.HOME }}/.vim/bundle/YouCompleteMe && ./install.py --gocode-completer"
+  args:
+      executable: /usr/bin/zsh
+  register: vim_python_output

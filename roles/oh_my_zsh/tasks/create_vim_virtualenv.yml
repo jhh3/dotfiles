@@ -1,0 +1,6 @@
+---
+
+- name: Create Python vim virtualenv
+  shell: "source {{ virtualenvwrapper_source }} && mkvirtualenv vim"
+  args:
+      executable: /bin/bash

@@ -1,0 +1,4 @@
+---
+- include: install_virtualenv_wrapper.yml
+- include: create_vim_virtualenv.yml
+- include: install_oh_my_zsh.yml

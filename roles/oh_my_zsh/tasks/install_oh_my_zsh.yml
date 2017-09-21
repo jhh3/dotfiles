@@ -1,0 +1,67 @@
+---
+
+# chsh to zsh
+# Do so without a password by following steps here
+# https://serverfault.com/questions/202468/changing-the-shell-using-chsh-via-the-command-line-in-a-script
+
+- name: Set users in chsh group to chsh without password
+  become: yes
+  action:
+    module: lineinfile
+    dest: "/etc/pam.d/chsh"
+    regexp: "auth       sufficient   pam_wheel.so trust group=chsh"
+    line: "auth       sufficient   pam_wheel.so trust group=chsh"
+    state: present
+    insertbefore: BOF
+    backup: yes
+    create: yes
+
+- name: Create chsh group
+  become: yes
+  group:
+    name: chsh
+    state: present
+
+- name: Add ansible user to chsh
+  become: yes
+  shell: "usermod -a -G chsh {{ ansible_user }}"
+
+- name: Chsh to zsh
+  shell: "chsh -s $(which zsh)"
+
+- name: Cloning oh-my-zsh
+  git:
+    repo: "https://github.com/robbyrussell/oh-my-zsh"
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh"
+
+- name: Copy custom theme
+  copy:
+    src: jhh3.zsh-theme
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/themes/jhh3.zsh-theme"
+
+- name: Create zsh dir
+  file:
+    path: "{{ ansible_env.HOME }}/.zsh"
+    state: directory
+    mode: 0755
+
+- name: Copy over custom functions
+  copy:
+    src: functions.zsh
+    dest: "{{ ansible_env.HOME }}/.zsh/functions.zsh"
+
+- name: Get vim virtualenv python
+  shell: "source {{ virtualenvwrapper_source }} && workon vim && which python"
+  args:
+      executable: /bin/bash
+  register: vim_python_output
+
+- set_fact:
+    vim_python_path: "{{ vim_python_output.stdout }}"
+
+- name: Create zshrc
+  vars:
+    vim_python: "{{ vim_python_path }}"
+  template:
+    src: zshrc.j2
+    dest: "{{ ansible_env.HOME }}/.zshrc"

@@ -1,0 +1,21 @@
+# Path to your oh-my-zsh installation.
+export ZSH=~/.oh-my-zsh
+
+# oh-my-zsh theme
+ZSH_THEME="jhh3"
+
+# oh-my-zsh plugins
+plugins=(git docker)
+
+# User configuration
+DEFAULT_USER=`id -un`
+source $ZSH/oh-my-zsh.sh
+
+# Editor
+export EDITOR='nvim'
+export VIM_PYTHON='{{ vim_python }}'
+
+# Settings
+setopt nobeep
+
+source ~/.zsh/functions.zsh

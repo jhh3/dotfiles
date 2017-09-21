@@ -1,0 +1,9 @@
+---
+
+# virtualenv wrapper vars
+virtualenv_version: 15.10
+virtualenvwrapper_version: 4.7
+virtualenvwrapper_python: "/usr/bin/python"
+virtualenvwrapper_virtualenv: "/usr/local/bin/virtualenv"
+virtualenvwrapper_source: "/usr/local/bin/virtualenvwrapper_lazy.sh"
+virtualenvwrapper_shell_file: ".zshrc"

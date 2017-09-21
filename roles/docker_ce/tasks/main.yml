@@ -1,0 +1,37 @@
+---
+
+- name: Install some apt packages
+  become: true
+  apt: name={{item}} state=installed
+  with_items:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+
+- name: Install the Docker gpg key
+  become: true
+  shell: "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -"
+
+- name: Add the Docker apt repository
+  become: true
+  shell: add-apt-repository \
+        "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+- name: apt update
+  become: true
+  apt: update_cache=yes
+
+- name: Install docker-ce
+  become: true
+  apt: name=docker-ce state=present
+
+- name: Get the username running the deploy
+  command: whoami
+  register: username_on_the_host
+
+- name: Add the user to the docker group (gives us sudo-less docker)
+  become: true
+  command: usermod -aG docker {{username_on_the_host.stdout}}
+
+

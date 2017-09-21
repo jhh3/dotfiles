@@ -1,0 +1,34 @@
+---
+
+- name: Accept host keys
+  hosts: localhost
+  gather_facts: no
+  connection: local
+  vars:
+    ssh_known_hosts: "{{ groups['all'] }}"
+    ssh_known_hosts_file: "{{ lookup('env','HOME') + '/.ssh/known_hosts' }}"
+  tasks:
+    - name: accept new ssh fingerprints
+      shell: "ssh-keyscan {{ hostvars[item].ansible_host }}"
+      with_items: "{{ ssh_known_hosts }}"
+      register: ssh_known_host_results
+      ignore_errors: yes
+
+    - name: Add/update the public key in the '{{ ssh_known_hosts_file }}'
+      known_hosts:
+        name: "{{  hostvars[item.item].ansible_host }}"
+        key: "{{ item.stdout }}"
+        path: "{{ ssh_known_hosts_file }}"
+      with_items: "{{ ssh_known_host_results.results }}"
+
+
+- name: Provision dev vms
+  hosts: dev-vms
+  gather_facts: yes
+  roles:
+    # Order matters here
+    - common
+    - oh_my_zsh # has side effect oh install virtualenv and creating a virtualenv for vim python
+    - golang
+    - docker_ce
+    - vim

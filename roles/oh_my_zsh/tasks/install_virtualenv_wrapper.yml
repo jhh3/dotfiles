@@ -1,0 +1,44 @@
+---
+
+# Install virtualenv and virtualenv wrapper
+
+- name: Install virtualenv
+  become: yes
+  action:
+    module: pip
+    name: virtualenv
+    version: "{{ virtualenv_version }}"
+    state: present
+  when: virtualenv_version | default(None) != None
+
+- name: Install virtualenvwrapper
+  become: yes
+  action:
+    module: pip
+    name: virtualenvwrapper
+    version: "{{ virtualenvwrapper_version }}"
+    state: present
+
+# Configure virtualenv wrapper
+
+- name: Set workon home path
+  become: yes
+  action:
+    module: lineinfile
+    dest: "{{ ansible_env.HOME }}/{{ virtualenvwrapper_shell_file }}"
+    regexp: "export WORKON_HOME"
+    line: "export WORKON_HOME={{ ansible_env.HOME }}/.virtualenvs/"
+    state: present
+    backup: yes
+    create: yes
+
+- name: Load virtualenvwrapper.sh
+  become: yes
+  action:
+    module: lineinfile
+    dest: "{{ ansible_env.HOME }}/{{ virtualenvwrapper_shell_file }}"
+    regexp: "source {{ virtualenvwrapper_source }}"
+    line: "source {{ virtualenvwrapper_source }}"
+    state: present
+    backup: yes
+    create: yes

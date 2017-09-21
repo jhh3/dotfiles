@@ -1,0 +1,8 @@
+---
+
+shell_file: ".zshrc"
+
+# golang vars
+golang_version: 1.9
+golang_os: linux
+golang_arch: amd64

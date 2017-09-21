@@ -1,0 +1,53 @@
+---
+
+- name: Download Go
+  get_url:
+    url: "https://storage.googleapis.com/golang/go{{ golang_version }}.{{ golang_os }}-{{ golang_arch }}.tar.gz"
+    dest: "/tmp/go{{ golang_version }}.{{ golang_os }}-{{ golang_arch }}.tar.gz"
+
+- name: Extract and install Go
+  become: yes
+  unarchive:
+    src: "/tmp/go{{ golang_version }}.{{ golang_os }}-{{ golang_arch }}.tar.gz"
+    dest: /usr/local/
+    copy: no
+
+- name: Add go install bin to PATH in shell file
+  become: yes
+  action:
+    module: lineinfile
+    dest: "{{ ansible_env.HOME }}/{{ virtualenvwrapper_shell_file }}"
+    regexp: "/usr/local/go/bin"
+    line: "export PATH=$PATH:/usr/local/go/bin"
+    state: present
+    backup: yes
+    create: yes
+
+- name: Create go workspace
+  file:
+    path: "{{ ansible_env.HOME }}/workspace/go/src"
+    state: directory
+    mode: 0755
+
+- name: Set workspace as GOPATH in shell file
+  become: yes
+  action:
+    module: lineinfile
+    dest: "{{ ansible_env.HOME }}/{{ virtualenvwrapper_shell_file }}"
+    regexp: "export GOPATH="
+    line: 'export GOPATH="$HOME/workspace/go"'
+    state: present
+    backup: yes
+    create: yes
+
+- name: Add GOPATH bin to PATH in shell file
+  become: yes
+  action:
+    module: lineinfile
+    dest: "{{ ansible_env.HOME }}/{{ virtualenvwrapper_shell_file }}"
+    regexp: "GOPATH/bin"
+    line: 'export PATH="$PATH:$GOPATH/bin"'
+    state: present
+    backup: yes
+    create: yes
+
