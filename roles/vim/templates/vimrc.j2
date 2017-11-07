@@ -32,6 +32,8 @@ Plugin 'jplaut/vim-arduino-ino'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
 Plugin 'kien/ctrlp.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'SirVer/ultisnips'
 
 " Python folding
 Plugin 'tmhedberg/SimpylFold'
@@ -51,13 +53,13 @@ colorscheme vimbrant
 set clipboard=unnamed
 set mouse=a " enable mouse support
 set wildmenu " cool tab completion stuff
-set wildmode=list:longest,full 
+set wildmode=list:longest,full
 set wildignore=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,*.pdf,*.bak,*.beam,*.pyc,*.aux
-set relativenumber " line numbers 
+set relativenumber " line numbers
 set number
 set ignorecase " searching - ignore case and AI
 set smartcase
-set visualbell " beeps are annoying 
+set visualbell " beeps are annoying
 set hlsearch " Search
 set title " Title
 set ruler " Ruler
@@ -194,8 +196,32 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 map <C-n> :NERDTreeTabsToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
 
+" Ctrlp
+map ff :CtrlP<.><cr>
+let g:ctrlp_custom_ignore = 'tmp$\|\.git$\|\.hg$\|\.svn$\|.rvm$|.bundle$\|vendor$'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_match_window_bottom=1
+let g:ctrlp_max_height=15
+let g:ctrlp_match_window_reversed=0
+let g:ctrlp_mruf_max=500
+let g:ctrlp_follow_symlinks=1
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('ag')
+	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
 " Notes
 let g:notes_suffix = '.txt'
 
 " Python folding
 let g:SimpylFold_docstring_preview=1
+
+" Make YCM and ultisnips play nice
+" https://gist.github.com/lencioni/dff45cd3d1f0e5e23fe6
+let g:SuperTabDefaultCompletionType    = '<C-n>'
+let g:SuperTabCrMapping                = 0
+let g:UltiSnipsExpandTrigger           = '<tab>'
+let g:UltiSnipsJumpForwardTrigger      = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
+let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
